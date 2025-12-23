@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> </title>
+  <style>
+      /* CSS는 알파벳 순서 정리 없이 기존 순서 그대로 유지합니다. (요청 시 정리해 드립니다.) */
+      * { box-sizing: border-box; }
+
+      :root {
+        --saw-main-font: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+        --saw-title-font: "Noto Sans KR", "Malgun Gothic Bold", "Apple SD Gothic Neo Bold", sans-serif;
+        --saw-main-bg: #000; 
+        --saw-text-color: #fff; 
+        --saw-menu-bg: #293627; 
+        --saw-menu-hover: #8B0000;
+        --saw-border-color: #444; 
+        }
+
+      .carousel-inner img {
+            width: 100%;  
+            height: 500px;
+        
+        }
+
+        body {
+          margin: auto;
+          position: relative;
+          background-color: var(--saw-main-bg); 
+          color: var(--saw-text-color);
+          font-family: var(--saw-main-font);
+        }
+
+        .carousel-inner {
+            text-align: center;
+        }
+
+        .container {
+          position: relative;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+            height: 100%;
+            width: 1200px;
+        }
+
+        .logo-link {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 1000; 
+        }
+    
+        .saw-logo {
+          width: 150px; 
+          height: auto;
+        }
+
+        .main-self {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        .main-text {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            font-size: 35px;
+            text-shadow: 2px 2px 3px var(--saw-main-bg);
+        }
+
+        .main2-self {
+            /* border: 5px solid green; */
+            width: 100%;
+            height: 50px;
+            margin: 3px 0;
+        }
+
+        .main2-self ul {
+            display: flex;
+            list-style: none;
+            margin-left: -40px;
+            height: 50px;
+        }
+
+        .main2-self ul li {
+            text-align: center;
+            flex: 1;
+            /* border: 1px solid #000; */
+            height: inherit;
+            float: left;
+        }
+
+        .main2-self ul li a {
+            /* border: 1px solid #000; */
+            display: block;
+            background-color: var(--saw-menu-bg);
+            height: 50px;
+            line-height: 50px;
+            color: var(--saw-text-color);
+        }
+        
+        .main2-self ul li:not(:first-child) {
+          border-left: 1px solid var(--saw-border-color);
+        }
+        .main2-self ul li a:hover {
+            background-color: var(--saw-menu-hover);
+            color: #fff;
+            transition: 0.5s;
+        }
+
+        .sub-text {
+          position: relative;
+        }
+
+        .sub-text::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translate(-50% 0);
+          border-bottom: 1px solid #aaa;
+          width: 500px;
+          height: 1px;
+        }
+
+        .sub-text::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translate(-50% 0);
+          border-bottom: 1px solid #aaa;
+          width: 500px;
+          height: 1px;
+        }
+        
+        .postit-content {
+          text-align: center;
+        }
+
+        .postit-content div {
+          margin: auto;
+          width: 800px;
+        }
+
+        .postit-content div p {
+          text-align: left;
+          padding: 0 10px;
+          font-weight: bold;
+        }
+
+        .postit-content div .tag-select {
+          width: 100%;
+          padding: 15px;
+          font-size: 15px;
+          border: 1px solid var(--saw-border-color); /* #444 테두리 */
+          background-color: #1a1a1a; /* 어두운 배경 */
+          color: var(--saw-text-color); /* 흰색 텍스트 */
+          cursor: pointer;
+          margin-bottom: 10px; /* 다음 요소와 간격 */
+          -webkit-appearance: none; /* 기본 OS 스타일 제거 (테마 일관성 유지) */
+          -moz-appearance: none;
+          appearance: none;
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* 흰색 드롭다운 화살표 추가 */
+          background-repeat: no-repeat;
+          background-position: right 15px top 50%;
+          background-size: 15px;
+        }
+
+        .postit-content div .tag-select:focus {
+          border-color: var(--saw-menu-hover); /* 붉은색 테두리 */
+          outline: none;
+        }
+
+        .postit-content div input[type=text], 
+        .postit-content div textarea {
+          width: 100%;
+          padding: 15px;
+          font-size: 15px;
+          border: none;
+          border-bottom: 1px solid #aaa;
+          background-color: #1a1a1a; /* 입력 필드 배경색 추가 */
+          color: var(--saw-text-color); /* 입력 텍스트 색상 추가 */
+        }
+
+        .postit-content div textarea {
+          width: 100%;
+          padding: 15px;
+          font-size: 15px;
+          border: 1px solid #aaa;
+          background-color: #1a1a1a; /* 입력 필드 배경색 추가 */
+          color: var(--saw-text-color); /* 입력 텍스트 색상 추가 */
+        }
+        
+        .postit-content div input[type=text]:focus, 
+        .postit-content div textarea:focus {
+          border-color: var(--saw-menu-hover); /* 포커스 시 붉은색 테두리 */
+        }
+
+        .postit-content div input[type=button] {
+          border: none;
+          width: 100%;
+          padding: 15px;
+          font-size: 15px;
+        }
+
+        .postit-content div input[type=text]:focus, 
+        .postit-content div input[type=button]:focus, 
+        .postit-content div textarea:focus {
+          outline: none;
+        }
+
+        .postit-content div input[type=button] {
+          cursor: pointer;
+          font-weight: bold;
+          border: 1px solid #ccc;
+        }
+
+        .postit-content div input[type=button]:hover {
+          background-color: #444;
+          color: #fff;
+          transition: 0.3s;
+        }
+
+        .file-upload-box {
+            border: 1px dashed var(--saw-border-color);
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+        .file-upload-box:hover {
+            border-color: var(--saw-menu-hover);
+            color: var(--saw-menu-hover);
+        }
+
+    .saw-footer {
+        width: 100%;
+        background-color: var(--saw-main-bg); 
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid var(--saw-border-color); 
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .saw-footer p {
+        margin: 0 0 5px 0;
+        color: var(--saw-text-color); 
+    }   
+
+    .saw-footer .copyright {
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .saw-footer .contact-info {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6); 
+    }
+
+    .tab-button {
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: var(--saw-menu-bg); 
+      color: var(--saw-text-color);
+      border: 1px solid var(--saw-border-color);
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .tab-button:hover {
+      background-color: #1a1a1a;
+      border-color: #777;
+    }
+
+    .tab-button.active {
+      background-color: var(--saw-menu-hover); 
+      border-color: var(--saw-menu-hover);
+    }
+  </style>
+</head>
+
+<body>
+  <a href="./home.html" class="logo-link">
+  <img src="./images/sawlogo.png" alt="Logo of SAW" class="saw-logo">
+  </a>
+  <div class="container">
+    <div class="main main-self"><img src="./images/theracksketch.jpg" width="100%" height="100%">
+      <b class="main-text"> </b>
+    </div>
+    <div class="main2 main2-self">
+        <ul>
+            <li> <a href="./home.html" style="text-decoration-line: none;">홈</a></li>
+            <li> <a href="./login.html" style="text-decoration-line: none;">로그인</a> </li>
+            <li> <a href="./testinsta.html" style="text-decoration-line: none;">인스타그램 로그인</a> </li>
+            <li> <a href="./post.html" style="text-decoration-line: none;">게시물 만들기</a></li>
+            <li> <a href="./join.html" style="text-decoration-line: none;">회원가입</a> </li>
+        </ul>
+    </div>
+    <h2 class="sub-text" style="text-align: center;"> 게시물 작성 </h2>
+    <div class="post-tabs" style="text-align: center; margin-bottom: 20px;">
+        <button class="tab-button active" onclick="showTab('text-content', this)">텍스트 (기본)</button>
+        <button class="tab-button" onclick="showTab('media-content', this)">이미지 & 비디오</button>
+    </div>
+
+    <div id="text-content" class="tab-content">
+        <div class="postit-content">
+            <div>
+                <p>작성자</p>
+                <input type="text" name="" id="" placeholder="작성자를 입력하세요">
+            </div>
+            <div>
+                <p>제목</p>
+                <input type="text" name="" id="" placeholder="제목을 입력하세요">
+            </div>
+            <div>
+                <p>태그 선택</p>
+                <select name="tag" id="tag-select-text" class="tag-select">
+                    <option value="">-- 태그를 선택하세요 --</option>
+                    <option value="discussion"> 논의🩸</option>
+                    <option value="fanart">팬아트🐷</option>
+                    <option value="meme">유머/밈🤣</option>
+                </select>
+            </div>
+            <div>
+                <p>내용</p>
+                <textarea name="" id="" cols="88" rows="20" placeholder="내용을 입력하세요"></textarea>
+            </div>
+            <div class="button">
+                <input type="button" value="등록하기">
+            </div>
+        </div>
+    </div>
+
+    <div id="media-content" class="tab-content" style="display: none;">
+        <div class="postit-content">
+             <div>
+                <p>작성자</p>
+                <input type="text" name="" id="" placeholder="작성자를 입력하세요">
+             </div>
+             <div>
+                <p>제목</p>
+                <input type="text" name="" id="" placeholder="제목을 입력하세요">
+            </div>
+             <div>
+                <p>태그 선택</p>
+                <select name="tag" id="tag-select-media" class="tag-select">
+                    <option value="">-- 태그를 선택하세요 --</option>
+                    <option value="discussion"> 논의🩸</option>
+                    <option value="fanart"> 팬아트🐷</option>
+                    <option value="meme">유머/밈🤣</option>
+                </select>
+            </div>
+            
+            <div class="file-upload-box">
+                <p style="font-weight: bold; margin-bottom: 5px;">여기에 이미지나 비디오 파일을 드래그 앤 드롭하거나 클릭하세요.</p>
+                <input type="file" accept="image/*,video/*" style="display: none;">
+            </div>
+            
+            <div>
+                <p>내용</p>
+                <textarea name="" id="" cols="88" rows="10" placeholder="추가 설명이나 내용을 입력하세요"></textarea>
+            </div>
+            <div class="button">
+                <input type="button" value="등록하기">
+            </div>
+        </div>
+    </div>
+    
+  </div>
+  <footer class="saw-footer">
+            <p class="copyright">
+            &copy; 2025 SAW Fandom Forum. All Rights Reserved. | Designed for Educational Purposes Only.
+            </p>
+            <p class="contact-info">
+            문의: contact@sawforum.com | 본 페이지는 영화 '쏘우(SAW)'의 비공식 팬덤 포럼입니다.
+            </p>
+  </footer> 
+
+<script>
+    function showTab(tabId, clickedButton) {
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.classList.remove('active');
+        });
+
+        document.getElementById(tabId).style.display = 'block';
+        clickedButton.classList.add('active');
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const textTab = document.getElementById('text-content');
+        if (textTab) {
+            textTab.style.display = 'block';
+        }
+    });
+
+    document.querySelectorAll('.file-upload-box').forEach(box => {
+        box.addEventListener('click', () => {
+            box.querySelector('input[type="file"]').click();
+        });
+    });
+</script>
+
+</body>
+
+</html>
